@@ -41,13 +41,12 @@
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>GestionTestJDBC</servlet-name>
-  	<servlet-class>com.octest.servlets.GestionTestJDBC</servlet-class>
+    <servlet-name>GestionTestJDBC</servlet-name>
+    <servlet-class>com.octest.servlets.GestionTestJDBC</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>GestionTestJDBC</servlet-name>
-  	<url-pattern>/testjdbc</url-pattern>
+    <servlet-name>GestionTestJDBC</servlet-name>
+    <url-pattern>/testjdbc</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>Set Character Encoding</filter-name>
@@ -65,7 +64,6 @@
     <filter-name>Set Character Encoding</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp </url-pattern>
