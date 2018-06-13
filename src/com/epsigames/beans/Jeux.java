@@ -7,6 +7,15 @@ public class Jeux {
     private String description;
     private String paysDeProduction;
     private String anneeDeRealisation;
+    private String genre;
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre( String genre ) {
+        this.genre = genre;
+    }
 
     public String getTitre() {
         return titre;

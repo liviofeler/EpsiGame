@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.epsigames.bdd.UtilisateurBDD;
 import com.epsigames.beans.Utilisateur;
 
 public class InscriptionForm {
@@ -83,6 +84,8 @@ public class InscriptionForm {
         /* Initialisation du résultat global de la validation */
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de l'inscription";
+            UtilisateurBDD tableUtilisateur = new UtilisateurBDD();
+            tableUtilisateur.ajouterUtilisateur( utilisateur );
         } else {
             resultat = "Echec de l'inscription";
         }

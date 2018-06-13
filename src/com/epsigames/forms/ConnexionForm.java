@@ -46,7 +46,7 @@ public class ConnexionForm {
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de la connexion";
         } else {
-            resultat = "Echec de l'inscription";
+            resultat = "Echec de la connexion";
         }
 
         return utilisateur;

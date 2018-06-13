@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epsigames.bdd.UtilisateurBDD;
+import com.epsigames.bdd.JeuxBDD;
 
 /**
  * Servlet implementation class TestUtilisateurBDD
@@ -31,8 +31,8 @@ public class TestUtilisateurBDD extends HttpServlet {
      */
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        UtilisateurBDD tableUtilisateur = new UtilisateurBDD();
-        request.setAttribute( "utilisateurs", tableUtilisateur.recupererUtilisateurs() );
+        JeuxBDD tableJeux = new JeuxBDD();
+        request.setAttribute( "jeux", tableJeux.recupererJeux() );
         this.getServletContext().getRequestDispatcher( "/WEB-INF/bonjour.jsp" ).forward( request, response );
     }
 
@@ -40,10 +40,21 @@ public class TestUtilisateurBDD extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      *      response)
      */
-    protected void doPost( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet( request, response );
-    }
+    /*
+     * protected void doPost( HttpServletRequest request, HttpServletResponse
+     * response ) throws ServletException, IOException { // TODO Auto-generated
+     * method stub Utilisateur utilisateur = new Utilisateur();
+     * utilisateur.setNom( request.getParameter( "nom" ) );
+     * utilisateur.setPrenom( request.getParameter( "prenom" ) );
+     * utilisateur.setAdresse( request.getParameter( "adresse" ) );
+     * utilisateur.setEmail( request.getParameter( "email" ) );
+     * utilisateur.setPlateforme( request.getParameter( "console" ) );
+     * utilisateur.setMotDePasse( request.getParameter( "motDePasse" ) );
+     * 
+     * UtilisateurBDD tableUtilisateur = new UtilisateurBDD();
+     * tableUtilisateur.ajouterUtilisateur( utilisateur );
+     * this.getServletContext().getRequestDispatcher( "/WEB-INF/inscription.jsp"
+     * ).forward( request, response ); }
+     */
 
 }

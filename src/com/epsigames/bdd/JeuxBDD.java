@@ -9,14 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.epsigames.beans.Utilisateur;
+import com.epsigames.beans.Jeux;
 
-public class UtilisateurBDD {
-
+public class JeuxBDD {
     private Connection connexion;
 
-    public List<Utilisateur> recupererUtilisateurs() {
-        List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+    public List<Jeux> recupererJeux() {
+        List<Jeux> jeux = new ArrayList<Jeux>();
 
         // Represente la requete Sql
         Statement statement = null;
@@ -29,19 +28,19 @@ public class UtilisateurBDD {
             statement = connexion.createStatement();
 
             // Exécution de la requète
-            resultat = statement.executeQuery( "Select nom, prenom FROM utilisateur;" );
+            resultat = statement.executeQuery( "Select titre, societeDeProduction FROM jeux;" );
 
             // Récupération des données
             while ( resultat.next() ) {
 
-                String nom = resultat.getString( "nom" );
-                String prenom = resultat.getString( "prenom" );
+                String titre = resultat.getString( "titre" );
+                String societeDeProduction = resultat.getString( "societeDeProduction" );
 
-                Utilisateur utilisateur = new Utilisateur();
-                utilisateur.setNom( nom );
-                utilisateur.setPrenom( prenom );
+                Jeux jeux1 = new Jeux();
+                jeux1.setTitre( titre );
+                jeux1.setSocieteDeProduction( societeDeProduction );
 
-                utilisateurs.add( utilisateur );
+                jeux.add( jeux1 );
             }
         } catch ( SQLException e ) {
 
@@ -58,7 +57,7 @@ public class UtilisateurBDD {
 
             }
         }
-        return utilisateurs;
+        return jeux;
 
     }
 
@@ -80,17 +79,19 @@ public class UtilisateurBDD {
 
     }
 
-    public void ajouterUtilisateur( Utilisateur utilisateur ) {
+    public void ajouterJeux( Jeux jeux ) {
         loadDatabase();
 
         try {
             PreparedStatement preparedStatement = connexion.prepareStatement(
-                    "Insert INTO utilisateur (nom, prenom, adresse, motDePasse,email) VALUES (?, ?, ?, ?, ?);" );
-            preparedStatement.setString( 1, utilisateur.getNom() );
-            preparedStatement.setString( 2, utilisateur.getPrenom() );
-            preparedStatement.setString( 3, utilisateur.getAdresse() );
-            preparedStatement.setString( 4, utilisateur.getMotDePasse() );
-            preparedStatement.setString( 5, utilisateur.getEmail() );
+                    "Insert INTO jeux (titre, sousTitre, societeDeProduction, description, genre, paysDeProduction, anneeDeProduction) VALUES (?, ?, ?, ?, ?, ?,?);" );
+            preparedStatement.setString( 1, jeux.getTitre() );
+            preparedStatement.setString( 2, jeux.getSousTitre() );
+            preparedStatement.setString( 3, jeux.getSocieteDeProduction() );
+            preparedStatement.setString( 4, jeux.getPaysDeProduction() );
+            preparedStatement.setString( 5, jeux.getDescription() );
+            preparedStatement.setString( 6, jeux.getGenre() );
+            preparedStatement.setString( 7, jeux.getAnneeDeRealisation() );
 
             preparedStatement.executeUpdate();
         } catch ( SQLException e ) {

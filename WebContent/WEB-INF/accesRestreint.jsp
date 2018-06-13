@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>test</title>
+<title>Accès restreint</title>
 </head>
 <body>
-	<ul>
-		<c:forEach var="jeux" items="${jeux }">
-			<li><c:out value="${jeux.titre }"/> <c:out value="${jeux.societeDeProduction}"/></li>
-		</c:forEach>
-	</ul>
-
+	<p> Vous êtes connecté(e) avec l'adresse ${sessionScope.sessionUtilisateur.email} ,vous avez bien accès à l'espace restreint </p>
 </body>
 </html>

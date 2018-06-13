@@ -51,6 +51,19 @@ public class Inscription extends HttpServlet {
         request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_USER, utilisateur );
         /* Transmission de la paire d'objet request/response ànotre JSP */
+        // ajouter utilisateur à la base
+        /*
+         * Utilisateur utilisateurBDD = new Utilisateur();
+         * utilisateurBDD.setNom( request.getParameter( "nom" ) );
+         * utilisateurBDD.setPrenom( request.getParameter( "prenom" ) );
+         * utilisateurBDD.setAdresse( request.getParameter( "adresse" ) );
+         * utilisateurBDD.setEmail( request.getParameter( "email" ) );
+         * utilisateurBDD.setPlateforme( request.getParameter( "console" ) );
+         * utilisateurBDD.setMotDePasse( request.getParameter( "motDePasse" ) );
+         * 
+         * UtilisateurBDD tableUtilisateur = new UtilisateurBDD();
+         * tableUtilisateur.ajouterUtilisateur( utilisateur );
+         */
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
